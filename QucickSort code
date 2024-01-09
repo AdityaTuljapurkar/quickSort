@@ -1,0 +1,49 @@
+class QS{
+    public static void QS(int arr[],int b,int e){
+        int l =b;
+        int r =e;
+        int k =(b+e)/2;
+        if(b>=e)return;
+        while((r!=k)||(l!=k)){
+            while ((arr[k]<=arr[r])&(k!=r))
+                r--;
+//                if (r==k)break;
+                if(arr[r]<arr[k]){
+                    //swap;
+                    int temp = arr[r];
+                    arr[r]= arr[k];
+                    arr[k]=temp;
+                    k =r;
+                }
+
+            while((arr[l]<=arr[k]&&(l!=k)))
+                l++;
+//                if (l==k)break;
+                if (arr[l]>arr[k]){
+                    //swap;
+                    int temp = arr[l];
+                    arr[l]=arr[k];
+                    arr[k]=temp;
+                    k=l;
+                }
+            }
+        QS(arr,b,k-1);
+        QS(arr,k+1,e);
+        }
+
+
+    public static void main(String[] args) {
+        int arr[]= new int []{
+                2,5,7,63,9,4,25,47,6,22,44,56
+        };
+        int S = 0;
+        int E = arr.length-1;
+//        int k = (S+E)/2;
+        QS(arr,0, arr.length-1);
+
+        for(int i=0;i< arr.length;i++){
+            System.out.print(" "+ arr[i]);
+        }
+
+            }
+}
