@@ -1,0 +1,73 @@
+ class LLv {
+    class Node {
+        int  data ;
+        Node next;
+        public Node(int d){
+            data = d;
+            next = null;
+        }
+    }
+    Node start = null;
+    Node end = null;
+    public void addFirst(int d){
+        Node newNode  = new Node(d);
+        if (start == null){
+            start =newNode;
+            end= newNode;
+        }
+        else {
+            newNode.next =start;
+            start = newNode;
+        }
+    }
+    public void addEnd(int d){
+        Node newNode = new Node(d);
+        if ((start == null)||(end == null)){
+            start = newNode;
+            end = newNode;
+        }
+        else {
+            end.next=newNode;
+            newNode = end;
+        }
+    }
+
+    public void deleteLast(){
+        if (start == null){
+            System.out.println("UNDERFILOW!! ");
+        }
+       else {
+           Node ptr = start.next;
+
+           Node loc = start;
+           loc.next=ptr;
+           while (ptr.next==null){
+               ptr=ptr.next;
+           }
+           ptr = null;
+           end=loc;
+        }
+    }
+     public void display(){
+         if (start==null) System.out.println("UMDERFLOW");
+         Node ptr = start ;
+         System.out.println("start -> ");
+         while(ptr != null){
+             System.out.print(ptr.data+"->");
+             ptr = ptr.next;
+         }
+     }
+}
+class Main{
+    public static void main(String[] args) {
+        LLv obj = new LLv();
+        int t1=5,t2=4,t3 = 45,t4=9,t5=4;
+        obj.addFirst(t5);
+        obj.addFirst(t4);
+        obj.addFirst(t3);
+        obj.addFirst(t2);
+        obj.addFirst(t1);
+        obj.deleteLast();
+        obj.display();
+    }
+}
