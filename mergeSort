@@ -1,0 +1,47 @@
+public class Main {
+    static void Sort(int S,int mid ,int E,int[]arr){
+        int[] c = new int[100];
+        int i =S ;
+        int j =mid+1;
+        int res = S;
+        while((i<=mid) && (j<=E)){
+            if (arr[i]<arr[j]){
+                c[res]=arr[i];
+                res++;i++;
+            }
+            else {
+                c[res]=arr[j];
+                res++;j++;
+            }
+        }
+        while(i<=mid){
+            c[res]=arr[i];
+            res++;i++;
+        }
+        while(j<=E){
+            c[res]=arr[j];
+            res++;j++;
+        }
+        for (int n=S;n<=E;n++){
+            arr[n]=c[n];
+        }
+    }
+    static void Divide(int S , int E , int[]arr){
+        int mid = (E+S)/2;
+        if (S>=E)return;
+        Divide(S,mid,arr);
+        Divide(mid+1,E,arr);
+        Sort(S,mid,E,arr);
+    }
+
+
+
+    public static void main(String[] args) {
+
+        int []arr=new int[]{2,98,3,5,4,8,6,12,77};
+        Divide(0, arr.length-1,arr);
+
+            for (int i = 0; i < arr.length; i++) {
+                System.out.print(" " + arr[i]);}
+    }
+}
