@@ -1,0 +1,23 @@
+public class selectionSort2 {
+    static void sortedArray(int arr[]) {
+        for (int i =0 ;i< arr.length-1;i++){
+            int minIndex = i;
+            for (int j = i+1 ; j< arr.length;j++){
+                if (arr[minIndex]>arr[j]) minIndex = j;
+            }
+            int temp = arr[i];
+            arr[i] =arr[minIndex];
+            arr[minIndex]= temp;
+        }
+        for (int e :
+                arr) {
+            System.out.print(" "+e);
+        }
+    }
+        public static void main (String[]args){
+            int arr[] = new int[]{12, 5, 65, 2, 3, 98, 45};
+            sortedArray(arr);
+//        printSortedArray(arr);
+        }
+
+}
